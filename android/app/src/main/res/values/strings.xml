@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">InfaXia</string>
+    <string name="title_activity_main">InfaXia</string>
+    <string name="package_name">com.infaxia.game</string>
+    <string name="custom_url_scheme">com.infaxia.game</string>
+</resources>
