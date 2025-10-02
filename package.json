@@ -7,7 +7,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "build:mobile": "next build --turbopack && npx cap sync",
+    "build:mobile": "MOBILE_BUILD=true next build --turbopack && npx cap sync",
     "android": "npx cap open android"
   },
   "dependencies": {
