@@ -79,18 +79,26 @@ html, body, #__next {
   display: none !important;
 }
 
-/* Aggressively hide Next.js icon */
-div[style*="position: fixed"][style*="bottom: 8px"][style*="left: 8px"],
-div[style*="position: fixed"][style*="bottom:8px"][style*="left:8px"],
-div[style*="bottom: 8px; left: 8px"],
-div[style*="bottom:8px;left:8px"],
-[style*="bottom: 8px"][style*="left: 8px"],
-[style*="bottom:8px"][style*="left:8px"] {
+/* Aggressively hide Next.js icon and Turbopack indicator */
+div[style*="position: fixed"][style*="bottom"],
+div[style*="position:fixed"][style*="bottom"],
+div[style*="position: fixed"][style*="left"],
+div[style*="position:fixed"][style*="left"],
+button[style*="position: fixed"][style*="bottom"],
+button[style*="position:fixed"][style*="bottom"],
+a[style*="position: fixed"][style*="bottom"],
+a[style*="position:fixed"][style*="bottom"] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
-  width: 0 !important;
-  height: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Hide Turbopack build indicator */
+nextjs-portal,
+[data-nextjs-scroll-focus-boundary],
+.__nextjs-scroll-focus-boundary {
+  display: none !important;
 }
 
 /* Target Next.js development elements more broadly */
@@ -137,4 +145,63 @@ div[style*="bottom:8px;left:8px"],
 /* Disable pull-to-refresh */
 body {
   overscroll-behavior-y: contain;
+}
+
+/* Mobile safe area support for notch devices */
+@supports (padding: env(safe-area-inset-top)) {
+  html, body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Mobile viewport height fix */
+html, body {
+  height: 100vh;
+  height: -webkit-fill-available;
+}
+
+@media (max-width: 768px) {
+  html, body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Landscape mode optimization for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  /* Reduce header height in landscape */
+  header {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  /* Make navigation bar more compact */
+  nav {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+
+  /* Reduce font sizes in landscape */
+  nav button span {
+    font-size: 9px !important;
+  }
+
+  /* Make icons smaller in navigation */
+  nav button svg {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+
+  /* Optimize chat and wallet forms for landscape */
+  .space-y-4 > div {
+    margin-bottom: 0.5rem !important;
+  }
+
+  input, select, button {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
 }

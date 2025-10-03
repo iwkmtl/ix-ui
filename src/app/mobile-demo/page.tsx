@@ -20,7 +20,7 @@ export default function MobileDemoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
+    <div className="fixed inset-0 w-full h-full bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 overflow-hidden">
       {/* 3D背景エフェクト */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.3),rgba(0,0,0,0))]"></div>
